@@ -1,3 +1,3 @@
-# Java Experimenting #
+# Computer Science A Learning
 
-I use this area to mess around and test my knowledge on Java programming, I'll make whatever I think I can create.
+**Computer Science A** focuses solely on Java programming, which I love. This is my practicing area.
