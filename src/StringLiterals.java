@@ -1,7 +1,6 @@
 public class StringLiterals {
 
-    public static void main(String[] args) {
-
+    protected static void run() {
         System.out.println("This is a string literal.");
         System.out.println("ABC123#$abc");
         System.out.println("Have a GREAT day!!");

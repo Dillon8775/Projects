@@ -17,6 +17,9 @@ public class HelloWorld {
         // 1st arg = format specifier, 2nd arg objects to be printed
         System.out.printf("%s%n%s", "Hello world!", "WOOOO!");
 
+        FindTheBugs.run();
+        StringLiterals.run();
+
         // Three primitives we will learn are int, doubles, and boolean
         int marbles = 10602;
         double avgScore = 95.8D; // uses 64-bits
