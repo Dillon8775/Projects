@@ -92,6 +92,11 @@ public class HelloWorld {
      * Exceptions occur while the program is running and will cause the program to terminate abnormally. A program "throws an exception."
      * Logic error: is largely either coder or user driven (bad logic or unexpected output).
     
+     * CLASSES are blueprints for creating objects with the same behavior and defined attributes.
+     * OBJECTS is a specfic entity, made from a class, that you can manipulate in your programs.
+     * OBJECTS are instances of classes with variables used to name them.
+     * Each object has behaviors and attributes that are defined by the classt hat was used to create it.
+    
      * Single quotes are char objects.
      * System.out.printf is more powerful.
 
