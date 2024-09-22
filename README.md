@@ -1,3 +1,3 @@
-# Computer Science A Learning
+# Java Learning
 
-**Computer Science A** focuses solely on Java programming, which I love. This is my practicing area.
+Teaching myself certain things in Java!
