@@ -77,7 +77,7 @@ public class Sets {
         Set<String> treeSet = new TreeSet<>();
         treeSet.addAll(names);
 
-        // A tree set that will be ordered in the order that they are added in.
+        // A linked hash set that will be ordered in the order that they are added in.
         Set<String> linkedHashSet = new LinkedHashSet<>();
         linkedHashSet.addAll(names);
 
