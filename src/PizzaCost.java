@@ -3,8 +3,34 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class PizzaCost {
+    // Set this boolean to true to run code that was taken in class.
+    private static final boolean runNotesCode = false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        if (runNotesCode) {
+            System.out.println("Running notes code...");
+            String wordOfDay = "computational";
+            // Prints out the length of the string "wordOfDay"
+            // C O M P U T A T I O N  A  L
+            // 0 1 2 3 4 5 6 7 8 9 10 11 12
+            // The length prints out 12
+            System.out.println(wordOfDay.length());
+
+            String word1 = "pal";
+            String word2 = "palm";
+            // Returns < 0 if this is less than other
+            // Returns zero if this is equal to other
+            // Returns > 0 if this is greater than other
+            System.out.println(word1.compareTo(word2));
+
+            processWords(word1, word2);
+
+            String msg = rStr("Dillon");
+            System.out.println(msg);
+
+            System.out.println("End of notes code. Starting pizza cost app.\n---");
+        }
+
         // Grant the user to the Pizza Cost app.
         System.out.println("Welcome to the Pizza Cost app!");
 
@@ -72,5 +98,34 @@ public class PizzaCost {
     // After all of this, we return this value.
     private static double calculateDiameter(double diameter) {
         return 0.05 * diameter * diameter;
+    }
+
+    public static void processWords(String word1, String word2) {
+        String str1 = word1.substring(0, 2);
+        String str2 = word2.substring(word2.length() - 1);
+        String result = str2 + str1;
+        System.out.println(result.indexOf(str2));
+    }
+
+    /*
+     * String (String str) - constructs a new String object that represents the same sequence of characters as str
+     * int length() - Returns the number of characters in a String object (starting at 0)
+     * String substring(int from, int to) - Returns the substring beginning at in dex from and ending at index to -]
+     * int indexOf(String str) - Returns the index of the first occurrence of str, returns -1 if not found.
+     * boolean equals(String other) - Returns true if this is equal to other.
+     */
+
+    /**
+     * <p>Static method, does not require an obj/instance to be invoked.
+     * <p>Similar to a {@code function} in other programming language.</p>
+     */
+    public static String rStr(String test) throws InterruptedException {
+        // compareTo, indexOf, equals methods
+        // "test" is only local in scope.
+        System.out.println("COMPARE TO: " + test.compareTo("Dillon")); // prints 0, meaning test and Dillon are the same
+        Thread.sleep(1000);
+        System.out.println("INDEX OF: " + test.indexOf("D")); // prints 0, meaning that index of 0 is D
+        System.out.println("EQUALS: " + test.equals("1")); // prints false because string 1 is not equal to string Dillon
+        return "POG";
     }
 }
