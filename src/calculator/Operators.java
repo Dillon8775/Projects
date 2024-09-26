@@ -12,6 +12,12 @@ public enum Operators {
     SQUARE_ROOT("√"),
     CUBED_ROOT("∛"),
     CIRCLE_AREA("πr2"),
+    SIN("sin¹"),
+    INV_SIN("sin⁻¹"),
+    COS("cos¹"),
+    INV_COS("cos⁻¹"),
+    TAN("tan¹"),
+    INV_TAN("tan⁻¹"),
     ANY("ANY");
 
     private final String operator;
@@ -47,6 +53,12 @@ public enum Operators {
                 Operators.SQUARE_ROOT.asString(),
                 Operators.CUBED_ROOT.asString(),
                 Operators.CIRCLE_AREA.asString(),
+                Operators.SIN.asString(),
+                Operators.COS.asString(),
+                Operators.TAN.asString(),
+                Operators.INV_SIN.asString(),
+                Operators.INV_COS.asString(),
+                Operators.INV_TAN.asString(),
                 Operators.ANY.asString()
         );
     }

@@ -49,8 +49,8 @@ public class Main {
 
     private static void openCalculatorScreen() {
         Calculator launchPage = new Calculator();
-        inputs.add(launchPage.getFirstValue());
-        inputs.add(launchPage.getSecondValue());
+        inputs.add(launchPage.getMainInput());
+        inputs.add(launchPage.getSecondaryInput());
 
         for (JTextComponent field : inputs) {
             field.addKeyListener(new KeyAdapter() {
