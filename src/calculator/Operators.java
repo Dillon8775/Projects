@@ -8,9 +8,11 @@ public enum Operators {
     MINUS("-"),
     MULTIPLY("*"),
     DIVIDE("/"),
+    MOD("%"),
     SQUARE_ROOT("√"),
     CUBED_ROOT("∛"),
-    CIRCLE_AREA("πr2");
+    CIRCLE_AREA("πr2"),
+    ANY("ANY");
 
     private final String operator;
 
@@ -21,29 +23,31 @@ public enum Operators {
     public static List<String> getOperators() {
         List<String> operators = new ArrayList<>();
         for (Operators operator : values()) {
-            operators.add(operator.getStringOperator());
+            operators.add(operator.asString());
         }
         return operators;
     }
 
-    public String getStringOperator() {
+    public String asString() {
         return this.operator;
     }
 
     public static List<String> twoWayOperators() {
         return List.of(
-                Operators.PLUS.getStringOperator(),
-                Operators.MINUS.getStringOperator(),
-                Operators.MULTIPLY.getStringOperator(),
-                Operators.DIVIDE.getStringOperator()
+                Operators.PLUS.asString(),
+                Operators.MINUS.asString(),
+                Operators.MULTIPLY.asString(),
+                Operators.DIVIDE.asString(),
+                Operators.MOD.asString()
         );
     }
 
     public static List<String> oneWayOperators() {
         return List.of(
-                Operators.SQUARE_ROOT.getStringOperator(),
-                Operators.CUBED_ROOT.getStringOperator(),
-                Operators.CIRCLE_AREA.getStringOperator()
+                Operators.SQUARE_ROOT.asString(),
+                Operators.CUBED_ROOT.asString(),
+                Operators.CIRCLE_AREA.asString(),
+                Operators.ANY.asString()
         );
     }
 }

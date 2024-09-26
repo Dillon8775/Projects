@@ -2,13 +2,12 @@ package calculator.screen;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
-public abstract class AbstractScreen implements ActionListener {
+public abstract class Screen implements ActionListener {
     private final JFrame frame = new JFrame();
 
-    public AbstractScreen() {
+    public Screen() {
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setSize(500, 500);
         this.frame.setLocationRelativeTo(null);
@@ -18,12 +17,13 @@ public abstract class AbstractScreen implements ActionListener {
         this.frame.setTitle(this.windowTitle());
     }
 
-    private void ofButton(JButton button, int[] bounds, boolean actionListener) {
+    protected JButton ofButton(JButton button, int[] bounds, boolean actionListener) {
         button.setBounds(bounds[0], bounds[1], bounds[2], bounds[3]);
         if (actionListener) {
             button.addActionListener(this);
         }
         this.frame.add(button);
+        return button;
     }
 
     protected void ofButton(JButton button, int[] bounds, boolean actionListener, boolean focusable) {
