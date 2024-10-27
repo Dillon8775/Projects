@@ -1,8 +1,9 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Investment {
     private static final boolean classNotes = false; // Run class notes
-    private double initialInvestment, targetAmount, annualInterestRate; // Our initial investment, target amount, and annual interest rate variables (doubles)
+    private double initialInvestment, targetAmount, annualInterestRate;  // Our initial investment, target amount, and annual interest rate variables (doubles)
 
     // Our Investment class constructor. This initializes all of our variables, so that they have the correct values when the user inputs them into the console when the program runs.
     public Investment(double initialInvestment, double targetAmount, double annualInterestRate) {
@@ -13,9 +14,13 @@ public class Investment {
 
     // Method to calculate years and the exact month it will take to reach the target amount
     public String calculateYearsAndMonth() {
+        // Create amount and set it to the initial investment amount, as that is the amount
         double amount = initialInvestment;
+        // Create a variable years and set it to 0.
         int years = 0;
+        // Create a variable months and set it to 0.
         int months = 0;
+        // An array list of the months in a year
         String[] monthsOfYear = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
         // Calculate years until the investment surpasses or reaches the target
@@ -24,7 +29,7 @@ public class Investment {
             years++;
         }
 
-        // Backtrack one year and calculate month-by-month for the final year
+        // Go back one year and calculate month-by-month for the final year
         amount = initialInvestment;
         for (int i = 0; i < years - 1; i++) {
             amount += amount * (annualInterestRate / 100);  // Add interest for each complete year
@@ -36,8 +41,27 @@ public class Investment {
             months++;
         }
 
-        // Print result!
-        return "It will take " + years + " years and reach the target in " + monthsOfYear[months - 1] + ".";
+        // Try to print the result, catch a ArrayIndexOutOfBoundsException.
+        // I'm really not sure why this happens.
+        // But we will use a catch block to prevent the program from crashing.
+        try {
+            return "It will take " + years + " years and reach the target in " + monthsOfYear[months - 1] + ".";
+        } catch (ArrayIndexOutOfBoundsException o) {
+            return "\nAn unexpected error occurred in calculating the time it will take to reach your target amount.\n";
+        }
+    }
+
+    // Method to instantiate a new investment object, and print it with new initial investment amount, target amount, and annual interest rate.
+    private static void printInvestment(double initialInvestment, double targetAmount, double annualInterestRate) {
+        Investment investment = new Investment(initialInvestment, targetAmount, annualInterestRate);
+        System.out.println(investment);
+    }
+
+    // Method to instantiate a new investment object, only with a new annual interest rate.
+    // The new investment object uses the previously inputted initial investment and target amount.
+    private static void printInvestment(Investment iInvestment, double annualInterestRate) {
+        Investment investment = new Investment(iInvestment.initialInvestment, iInvestment.targetAmount, annualInterestRate);
+        System.out.println(investment);
     }
 
     // Allows the investment object to be correctly printed as a string.
@@ -45,9 +69,17 @@ public class Investment {
     public String toString() {
         return "Initial investment: $"+initialInvestment+
                 "\nTarget Amount: $"+targetAmount+
-                "\nAnnual Interest Rate: "+(annualInterestRate * 100)+"%"+ calculateYearsAndMonth();
+                "\nAnnual Interest Rate: "+annualInterestRate+"%\n"+ calculateYearsAndMonth();
     }
 
+    /** NOTES:
+     * A public method can be accessed anywhere.
+     * A protected method can only be accessed within the scope package.
+     * A private method can only be accessed within that class file.
+     * Local variables can be declared in the body of constructors and methods. These variables may only be used within the constructor or method and cannot be declared to be public or private.
+     * When there is a local variable with the same name as the instance variable, the variable name will refer to the local variable instead of hte instance variable.
+     * Formal parameters ana variables declared in a method or constructor an only be used iin that method or constructor.
+     */
     public static void main(String[] args) throws InterruptedException {
         Scanner input = new Scanner(System.in);
 
@@ -200,13 +232,19 @@ public class Investment {
 //
 //            System.out.print("Enter a message:\n>>>");
 //            String message = input.nextLine();
-//            for (int i = 0; i < message.length(); i++) {
-//                // will print each character in message
-//                System.out.println(message.charAt(i));
+////            for (int i = 0; i < message.length(); i++) {
+////                // will print each character in message
+////                System.out.println(message.charAt(i));
+////            }
+//            // Enhanced for loop
+//            for (char c : message.toCharArray()) {
+//                System.out.print(c+"-");
 //            }
-//        }
 //
-//        System.out.println("======");
+//            fiftyYRInt();
+//        }
+
+        System.out.println("======");
 
         // BEGINNING OF INVESTMENT CODE
 
@@ -224,7 +262,6 @@ public class Investment {
         // Prompts the user to enter the annual interest rate as a PERCENTAGE. This value will later be converted to a decimal.
         System.out.println("Enter the annual interest rate (as a PERCENTAGE): ");
         double annualInterestRate = input.nextDouble();
-        annualInterestRate /= 100; // Convert annual interest rate percentage to a decimal.
 
         // Create a new Investment object, passing in our previously declared variables.
         Investment investment = new Investment(initialInvestment, targetAmount, annualInterestRate);
@@ -232,14 +269,59 @@ public class Investment {
         // Print out the investment (as a string, see toString method above)
         System.out.println(investment);
 
+        // After the program runs once, run this block of code until the user decides to exit.
         while (true) {
-            System.out.println("Enter a new annual interest rate (or type 0 to exit the program): ");
-            double newRate = input.nextDouble();
-            if (newRate == 0) {
-                break;
+            System.out.println("---\nWhat would you like to do now?");
+
+            // User can type "0" to exit and safely close the program.
+            System.out.println("0 >>> EXIT");
+            // Type "1" to restart, and enter a new initial investment amount, target amount, and annual interest rate.
+            System.out.println("1 >>> Restart");
+            // Type "2" to simply enter a new annual interest rate, w
+            System.out.println("2 >>> Enter a new annual interest rate, with the same amount inputted previously");
+
+            try {
+                // Create an integer variable to store the users input.
+                int doNext = input.nextInt();
+
+                // A switch statement (basically a simpiler way to do similar else-if statements) for numbers 0-2
+                switch (doNext) {
+                    // If doNext = 0, exit the program.
+                    case 0 -> System.exit(0);
+                    // If doNext = 1, prompt the user to enter new information, and print it, and then repeat this code.
+                    case 1 -> {
+                        System.out.print("Enter a new investment amount:\n>>>");
+                        initialInvestment = input.nextDouble();
+                        System.out.print("Enter a new target amount:\n>>>");
+                        targetAmount = input.nextDouble();
+                        System.out.print("Enter a new annual interest rate (as a PERCENTAGE):\n>>>");
+                        annualInterestRate = input.nextDouble();
+                        printInvestment(initialInvestment, targetAmount, annualInterestRate);
+                    }
+                    // If doNext = 2, prompt the user to just enter a new annual interest rate percentage.
+                    // The initial investment amount and target amount will remain the same.
+                    case 2 -> {
+                        System.out.print("Enter another annual interest rate:\n>>>");
+                        annualInterestRate = input.nextDouble();
+                        printInvestment(investment, annualInterestRate);
+                    }
+                }
+                // Catch a InputMismatchException (the users enters something that is not a number)
+            } catch (InputMismatchException o) {
+                // Tell the user that they entered an invalid input.
+                System.out.println("It seems you have entered an invalid input. Please try again.");
+                // Clear the input, and try again.
+                // ERROR: had an infinite loop because I didn't add this.
+                input.next();
             }
-            investment.annualInterestRate = newRate;
-            System.out.println(investment);
         }
     }
+
+//    private static void fiftyYRInt() {
+//        double balance = 200.00;
+//        for (int i = 0; i < 50; i++) {
+//            balance += balance * .10;
+//        }
+//        System.out.printf("%s%n%s%,.2f", "Your balance of $200.00 after 50 years is: ","$ ",balance);
+//    }
 }
