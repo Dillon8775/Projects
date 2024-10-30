@@ -2,9 +2,22 @@ package paycheck;
 
 import util.IMath;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class PaycheckCalculator {
+
+    public void run() {
+        while (true) {
+            try {
+                calculate();
+                break;
+            } catch (InputMismatchException o) {
+                System.out.println("Please input a valid number.");
+                System.out.println();
+            }
+        }
+    }
 
     public void calculate() {
         System.out.print("How much do you make per hour?\n>>>");
@@ -33,17 +46,17 @@ public abstract class PaycheckCalculator {
         totalDeductions = IMath.round(totalDeductions, false);
         netIncome = IMath.round(netIncome, false);
 
-        System.out.println("Gross Income: $"+grossIncome);
+        System.out.println("Gross Income: $" + grossIncome);
         System.out.println();
 
-        System.out.println("Federal Income Tax ("+this.federalIncomeTaxPercentage()+"%): $"+federalIncomeTax);
-        System.out.println("Social Security Tax ("+this.socialSecurityTaxPercentage()+"%): $"+socialSecurityTax);
-        System.out.println("Medicare Tax ("+this.medicareTaxPercentage()+"%): $"+medicareTax);
-        System.out.println("State Income Tax ("+this.stateIncomeTaxPercentage()+"%): $"+stateIncomeTax);
+        System.out.println("Federal Income Tax (" + this.federalIncomeTaxPercentage() + "%): $" + federalIncomeTax);
+        System.out.println("Social Security Tax (" + this.socialSecurityTaxPercentage() + "%): $" + socialSecurityTax);
+        System.out.println("Medicare Tax (" + this.medicareTaxPercentage() + "%): $" + medicareTax);
+        System.out.println("State Income Tax (" + this.stateIncomeTaxPercentage() + "%): $" + stateIncomeTax);
         System.out.println();
 
-        System.out.println("Total Deductions: $"+totalDeductions);
-        System.out.println("Net Income: $"+netIncome);
+        System.out.println("Total Deductions: $" + totalDeductions);
+        System.out.println("Net Income: $" + netIncome);
     }
 
     public abstract double federalIncomeTaxPercentage();

@@ -1,20 +1,10 @@
 package paycheck;
 
-import java.util.InputMismatchException;
-
 public class NCCalculator extends PaycheckCalculator {
 
     public static void main(String[] args) {
         NCCalculator ncCalculator = new NCCalculator();
-        while (true) {
-            try {
-                ncCalculator.calculate();
-                break;
-            } catch (InputMismatchException o) {
-                System.out.println("Please input a valid number.");
-                System.out.println();
-            }
-        }
+        ncCalculator.run();
     }
 
     @Override
