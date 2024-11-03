@@ -1,5 +1,6 @@
 package paycheck;
 
+@Deprecated
 public class NCCalculator extends PaycheckCalculator {
 
     public static void main(String[] args) {

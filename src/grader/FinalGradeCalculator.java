@@ -56,7 +56,6 @@ public class FinalGradeCalculator {
         finalGrade = IMath.toPercentage(finalGrade);
 
         System.out.print("Your final grade is:\n"+finalGrade+"%");
-
         scanner.close();
     }
 }

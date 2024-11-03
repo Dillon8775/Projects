@@ -5,6 +5,7 @@ import util.IMath;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+@Deprecated
 public abstract class PaycheckCalculator {
 
     public void run() {
