@@ -15,10 +15,10 @@ public class QuarterGradeCalculator {
         List<Double> possiblePoints = new ArrayList<>();
         double p, m;
         for (int i = 0; i < assignmentNum; i++) {
-            System.out.println("Enter the maximum amount of points possible for assignment " + (i + 1) + ".");
+            System.out.print("Enter the maximum amount of points possible for assignment " + (i + 1) + ".\nPP("+(i+1)+")>>>");
             m = scanner.nextDouble();
             possiblePoints.add(m);
-            System.out.println("Great! Now, enter the points that you earned for assignment " + (i + 1) + ".");
+            System.out.print("Great! Now, enter the points that you earned for assignment " + (i + 1) + ".\nPE("+(i+1)+")>>>");
             p = scanner.nextDouble();
             earnedPoints.add(p);
         }
