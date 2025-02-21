@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// ROBOT GRID PROJECT
 public class RobotGrid {
     private static final int SIZE = 8; // Create a final SIZE integer for the grid.
     private static char[][] grid = new char[SIZE][SIZE]; // Initialize the grid to have size of 8. (8x8)
@@ -114,9 +115,13 @@ public class RobotGrid {
                 newYPos--;
             }
 
+            // Track the robot's movement and print the grid for each move.
             System.out.println("Robot is on the move...");
             printGrid();
 
+            // Make sure that the robot can move to the next spot by using my isValidMove method.
+            // Then set the grid[x][y] (or robot) to the direction and position to correctly update it for each move.
+            // I also must use InterruptedException because of the Thread.sleep call
             if (isValidMove(newXPos, newYPos)) {
                 grid[x][y] = '-';
                 x = newXPos;
@@ -128,19 +133,27 @@ public class RobotGrid {
                     System.out.println("Movement interrupted!");
                 }
             } else {
+                // if the grid can't move to the next position then just print out that the robot can't leave the grid.
                 System.out.println("You cannot leave the grid.");
             }
         }
     }
 
+    // This took way to long to figure out.
     private boolean isValidMove(int newXPos, int newYPos) {
+        // i thought this would work but it doesn't because this isn't the correct order to check around the robot
+//        return newXPos <= 0 && newYPos >= 0;
         return newXPos >= 0 && newXPos < SIZE && newYPos >= 0 && newYPos < SIZE;
     }
 
+    // Change the direction of the robot.
     private void changeDirection() {
         Scanner scanner = new Scanner(System.in);
+        // Create a new scanner to get the direction of the robot from the user.
         System.out.println("Enter new direction (N = north, E = east, S = south, W = west");
 
+        // Using a try-catch statement, I can simply set grid[x][y] (the pos of the robot) to the new direction
+        // I also need to set direction to the new direction.
         try {
             String newDirection = scanner.nextLine();
             newDirection = newDirection.toUpperCase();
@@ -149,17 +162,22 @@ public class RobotGrid {
                 System.out.println("Direction changed to " + getDirection());
                 grid[x][y] = getRobotDirection();
             } else {
-                System.out.println("You must use 0, 90, 180 or 270 as your direction input.");
+                // Make sure that the user enters one of these letters.
+                System.out.println("You must use N, E, S or W as your direction input.");
             }
         } catch (Exception e) {
-            System.out.println("Please enter a valid number.");
+            // for if the user enters a weird character
+            System.out.println("Please enter a valid input.");
         }
     }
 
+    // Change the speed of the robot grid.
     private void changeSpeed() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter new speed (in SECONDS):");
 
+        // All I have to do here is multiply the user's input by 1,000 to make it easier for the user to enter how fast they want the robot grid to move.
+        // I just have to change the speed variable here, and then use that new value with Thread.sleep
         try {
             int newSpeed = (Integer.parseInt(scanner.nextLine()) * 1000);
             if (newSpeed > 0) {
@@ -173,6 +191,7 @@ public class RobotGrid {
         }
     }
 
+    // Simply returns the char direction of the robot (like the robot direction visually) based on the direction variable.
     private char getRobotDirection() {
         if (direction.equals("N")) {
             return facingNorth;
@@ -185,6 +204,7 @@ public class RobotGrid {
         }
     }
 
+    // Gets the direction of the robot as a string based on the direction variable letter.
     private String getDirection() {
         if (direction.equals("N")) {
             return "North";
