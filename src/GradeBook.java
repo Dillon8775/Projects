@@ -11,6 +11,10 @@ public class GradeBook {
         this.students.add(student);
     }
 
+    public void removeStudent(Student student) {
+        this.students.remove(student);
+    }
+
     public void changeGrade(String name) {
         for (Student obj : this.getAllStudents()) {
             if (obj.getStudentName().equals(name)) {
