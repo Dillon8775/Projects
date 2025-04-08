@@ -58,6 +58,7 @@ public class CourseGrades {
                             System.out.println(student.getGrade(i));
                         }
                         found = true;
+                        System.out.println("Student average: " + gradeBook.studentAvg(name) + "%");
                         break;
                     }
                 }

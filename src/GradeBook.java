@@ -1,28 +1,32 @@
 import java.util.ArrayList;
 
 public class GradeBook {
-    private ArrayList<Student> students = new ArrayList<>();
+    private final ArrayList<Student> students = new ArrayList<>(); // Array list of students
 
+    /**
+     * Returns the array list of students.
+     */
     public ArrayList<Student> getAllStudents() {
         return this.students;
     }
 
+    /**
+     * Adds a student to the array list of students.
+     */
     public void addStudent(Student student) {
         this.students.add(student);
     }
 
+    /**
+     * Removes a student from the array list of students.
+     */
     public void removeStudent(Student student) {
         this.students.remove(student);
     }
 
-    public void changeGrade(String name) {
-        for (Student obj : this.getAllStudents()) {
-            if (obj.getStudentName().equals(name)) {
-
-            }
-        }
-    }
-
+    /**
+     * Returns the average % of a student's grades.
+     */
     public int studentAvg(String studentName) {
         int allGradesAddedUp = 0;
         String validName = "";
@@ -42,6 +46,7 @@ public class GradeBook {
         }
     }
 
+    // Unused method
     public int testAvg(String studentName, int test) {
         int total = 0;
         Student studentToUse = null;
