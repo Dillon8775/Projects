@@ -15,11 +15,12 @@ public class QuarterGradeCalculator {
         List<Double> possiblePoints = new ArrayList<>();
         double p, m;
         for (int i = 0; i < assignmentNum; i++) {
-            System.out.print("Enter the maximum amount of points possible for assignment " + (i + 1) + ".\nPP("+(i+1)+")>>>");
-            m = scanner.nextDouble();
+            System.out.print("Enter assignment #" + (i + 1) + " grade.\n>>>");
+            String input = scanner.next();
+            int index = input.indexOf('/');
+            m = Integer.parseInt(input.substring(index + 1));
+            p = Integer.parseInt(input.substring(0, index));
             possiblePoints.add(m);
-            System.out.print("Great! Now, enter the points that you earned for assignment " + (i + 1) + ".\nPE("+(i+1)+")>>>");
-            p = scanner.nextDouble();
             earnedPoints.add(p);
         }
 
@@ -36,8 +37,29 @@ public class QuarterGradeCalculator {
         double grade = totalPointsEarned / totalPointsPossible;
         grade = grade * 100;
 
-        System.out.println("Total points possible: " + totalPointsPossible);
-        System.out.println("Total points earned: " + totalPointsEarned);
-        System.out.println("Your quarter grade is: " + grade + "%");
+        String letterGrade;
+        if (grade >= 95 && grade <= 100) {
+            letterGrade = "A+";
+        } else if (grade >= 90 && grade <= 94) {
+            letterGrade = "A";
+        } else if (grade >= 85 && grade <= 89) {
+            letterGrade = "B+";
+        } else if (grade >= 80 && grade <= 84) {
+            letterGrade = "B";
+        } else if (grade >= 75 && grade <= 79) {
+            letterGrade = "C+";
+        } else if (grade >= 70 && grade <= 74) {
+            letterGrade = "C";
+        } else if (grade >= 65 && grade <= 69) {
+            letterGrade = "D+";
+        } else if (grade >= 60 && grade <= 64) {
+            letterGrade = "D";
+        } else {
+            letterGrade = "F";
+        }
+
+        System.out.println("Total points possible: " + (int) totalPointsPossible);
+        System.out.println("Total points earned: " + (int) totalPointsEarned + " (from " + assignmentNum + " assignments).");
+        System.out.println("Your quarter grade is: " + grade + "% (" + letterGrade+")");
     }
 }
