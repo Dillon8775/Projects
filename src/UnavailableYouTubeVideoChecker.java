@@ -5,15 +5,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UnavailableYouTubeVideoChecker {
     private static int i = 0;
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        List<String> videoIds = readVideoIdsFromFile("C:\\Users\\dillo\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
+        List<String> videoIdsLaptop = readVideoIdsFromFile("C:\\Users\\dillo\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
+        List<String> videoIdsPC = readVideoIdsFromFile("E:\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
 
-        for (String videoId : videoIds) {
+        System.out.print("Laptop (l) or PC (p)?\n>>>");
+        Scanner scanner = new Scanner(System.in);
+        String type = scanner.nextLine().toLowerCase();
+
+        for (String videoId : type.equals("l") ? videoIdsLaptop : videoIdsPC) {
             checkVideo(videoId);
             i++;
         }
@@ -65,11 +71,9 @@ public class UnavailableYouTubeVideoChecker {
             String content = pageContent.toString();
 
             if (content.contains("Video unavailable") || content.contains("video is not available") || content.contains("404 Not Found")) {
-                System.out.println("<!>");
-                System.out.println(urlStr+videoId + " is UNAVAILABLE.");
-                System.out.println("<!>");
+                System.out.println("<!> #" + (i+1) + ": " + urlStr+videoId + " is UNAVAILABLE.");
             } else {
-                System.out.println(videoId + " is good...");
+                System.out.println("#" + (i+1) + ": " + videoId + " is good...");
             }
         } catch (Exception e) {
             System.out.println(videoId + " => ERROR: " + e.getMessage());
