@@ -25,7 +25,7 @@ public class UnavailableYouTubeVideoChecker {
         }
 
         long endTime = System.currentTimeMillis();
-        System.out.println("\nFinished reading " + (i-1) + " videos in " + ((endTime - startTime) / 1000) + " seconds.");
+        System.out.println("\nFinished reading " + (i) + " videos in " + ((endTime - startTime) / 1000) + " seconds.");
     }
 
     private static List<String> readVideoIdsFromFile(String filePath) {
