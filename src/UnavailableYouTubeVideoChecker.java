@@ -8,18 +8,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UnavailableYouTubeVideoChecker {
-    private static final List<String> videoIdsLaptop = readVideoIdsFromFile("C:\\Users\\dillo\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
     private static final List<String> videoIdsPC = readVideoIdsFromFile("E:\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
     private static int i = 0;
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        System.out.print("Laptop (l) or PC (p)?\n>>>");
-        Scanner scanner = new Scanner(System.in);
-        String type = scanner.nextLine().toLowerCase();
-
-        for (String videoId : type.equals("l") ? videoIdsLaptop : videoIdsPC) {
+        for (String videoId : videoIdsPC) {
             checkVideo(videoId);
             i++;
         }
