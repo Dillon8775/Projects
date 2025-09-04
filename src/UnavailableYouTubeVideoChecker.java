@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class UnavailableYouTubeVideoChecker {
     private static final List<String> videoIdsPC = readVideoIdsFromFile("E:\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
     private static int i = 0;
+    private static int unavailableVideos = 0;
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
@@ -21,6 +22,9 @@ public class UnavailableYouTubeVideoChecker {
 
         long endTime = System.currentTimeMillis();
         System.out.println("\nFinished reading " + (i) + " videos in " + ((endTime - startTime) / 1000) + " seconds.");
+        if (unavailableVideos != 0) {
+            System.out.println(unavailableVideos + " video(s) were found unavailable.");
+        }
     }
 
     private static List<String> readVideoIdsFromFile(String filePath) {
@@ -65,8 +69,12 @@ public class UnavailableYouTubeVideoChecker {
 
             String content = pageContent.toString();
 
-            if (content.contains("Video unavailable") || content.contains("video is not available") || content.contains("404 Not Found")) {
+            if (content.contains("Video unavailable") ||
+                    content.contains("video is not available") ||
+                    content.contains("404 Not Found") ||
+                    content.contains("Private video")) {
                 System.out.println("<!> #" + (i+1) + ": " + urlStr+videoId + " is UNAVAILABLE.");
+                unavailableVideos++;
             } else {
                 System.out.println("#" + (i+1) + "/" + videoIdsPC.toArray().length + ": " + videoId + " is good...");
             }
