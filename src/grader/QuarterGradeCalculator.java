@@ -15,7 +15,7 @@ public class QuarterGradeCalculator {
         List<Double> possiblePoints = new ArrayList<>();
         double p, m;
         for (int i = 0; i < assignmentNum; i++) {
-            System.out.print("Enter assignment #" + (i + 1) + " grade.\n>>>");
+            System.out.print("Enter assignment #" + (i + 1) + " grade. (%/%)\n>>>");
             String input = scanner.next();
             int index = input.indexOf('/');
             m = Integer.parseInt(input.substring(index + 1));
