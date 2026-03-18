@@ -5,7 +5,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class UnavailableYouTubeVideoChecker {
     private static final List<String> videoIdsPC = readVideoIdsFromFile("E:\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
