@@ -1,5 +1,8 @@
 package advancedreview;
 
+// Dillon C Strickland
+// 3/18/2025
+// A basic rectangle, containing the width and height.
 public class Rectangle {
     private double width = 1;
     private double height = 1;
@@ -25,6 +28,6 @@ public class Rectangle {
     }
 
     public double getPerimeter() {
-        return width * 4;
+        return (2 * width + 2 * height);
     }
 }

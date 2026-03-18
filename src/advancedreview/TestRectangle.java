@@ -1,5 +1,8 @@
 package advancedreview;
 
+// Dillon C Strickland
+// 3/18/2025
+// A testing class to output the values of rectangle objects.
 public class TestRectangle {
 
     public static void main(String[] args) {
