@@ -1,0 +1,20 @@
+package college.advancedreview;
+
+// Dillon C Strickland
+// 3/18/2025
+// A testing class to output the values of rectangle objects.
+public class TestRectangle {
+
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(4, 40);
+        Rectangle rectangle2 = new Rectangle(3.5, 35.9);
+
+        System.out.println("The area of a rectangle with width " + rectangle.getWidth() + " and height " + rectangle.getWidth() + " and height " + rectangle.getHeight() + " is " + rectangle.getArea());
+
+        System.out.println("The perimeter of a rectangle is " + rectangle.getPerimeter());
+
+        System.out.println("The area of a rectangle with width " + rectangle2.getWidth() + " and height " + rectangle2.getHeight() + " and height is " + rectangle2.getArea());
+
+        System.out.println("The perimeter of a rectangle is " + rectangle2.getPerimeter());
+    }
+}

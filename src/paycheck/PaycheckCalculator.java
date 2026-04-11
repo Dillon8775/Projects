@@ -1,6 +1,6 @@
 package paycheck;
 
-import util.IMath;
+import college.util.IMath;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

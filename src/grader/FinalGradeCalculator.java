@@ -1,6 +1,6 @@
 package grader;
 
-import util.IMath;
+import college.util.IMath;
 
 import java.util.Scanner;
 

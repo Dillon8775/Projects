@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnavailableYouTubeVideoChecker {
-    private static final List<String> videoIdsPC = readVideoIdsFromFile("E:\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
+    private static final List<String> videoIdsPC = readVideoIdsFromFile("C:\\Users\\dillo\\OneDrive\\Miscellaneous\\YouTube Unavailable Video Fixer\\video_ids.txt");
     private static int i = 0;
     private static int unavailableVideos = 0;
 
